@@ -614,11 +614,10 @@ body.modal-open{overflow:hidden}
   id="reviewForm"
   action="https://formspree.io/f/mrerowze" 
   method="POST"
-
+>
 <input type="hidden" name="_subject" value="New StructoCost Inquiry">
 <input type="hidden" name="_captcha" value="false">
 
->
         <label for="rm-name">Full Name<span class="req">*</span></label>
         <input id="rm-name" name="name" type="text" autocomplete="name" required placeholder="Your full name">
 
@@ -764,7 +763,7 @@ body.modal-open{overflow:hidden}
     fileNameEl.textContent = fileInput.files && fileInput.files[0] ? fileInput.files[0].name : '';
   });
 
-  form.addEventListener('submit', function(e){
+form.addEventListener('submit', function(e){
   if(!form.checkValidity()){
     e.preventDefault();
     form.reportValidity();
@@ -774,19 +773,9 @@ body.modal-open{overflow:hidden}
   submitBtn.disabled = true;
   submitBtn.textContent = 'Sending...';
 });
-    if(!form.checkValidity()){
-      form.reportValidity();
-      return;
-    }
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-    setTimeout(function(){
-      modalBody.style.display = 'none';
-      success.classList.add('show');
-      setTimeout(closeInquiryModal, 2200);
-    },700);
-  });
+
 })();
+
 </script>
 </body>
 </html>
