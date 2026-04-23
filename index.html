@@ -609,7 +609,16 @@ body.modal-open{overflow:hidden}
         <p>Share a few project details and our team will review your inquiry and get back to you within 1–2 business days.</p>
       </div>
 
-      <form class="modal-form" id="reviewForm" novalidate>
+      <form 
+  class="modal-form" 
+  id="reviewForm"
+  action="https://formspree.io/f/mrerowze" 
+  method="POST"
+
+<input type="hidden" name="_subject" value="New StructoCost Inquiry">
+<input type="hidden" name="_captcha" value="false">
+
+>
         <label for="rm-name">Full Name<span class="req">*</span></label>
         <input id="rm-name" name="name" type="text" autocomplete="name" required placeholder="Your full name">
 
@@ -756,7 +765,15 @@ body.modal-open{overflow:hidden}
   });
 
   form.addEventListener('submit', function(e){
+  if(!form.checkValidity()){
     e.preventDefault();
+    form.reportValidity();
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Sending...';
+});
     if(!form.checkValidity()){
       form.reportValidity();
       return;
