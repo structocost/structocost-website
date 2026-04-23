@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StructoCost | Structural Design & Cost Consultancy</title>
+<meta name="description" content="StructoCost provides structural design, cost planning, BOQ preparation, and pre-construction consultancy for residential, land development, and site infrastructure projects in the Philippines.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#17324D;
+  --navy-2:#244A6B;
+  --blue:#5E8FBE;
+  --blue-soft:#EAF2F8;
+  --beige:#F6F0E8;
+  --beige-2:#FBF8F4;
+  --text:#1E2936;
+  --muted:#667085;
+  --line:#E6E8EC;
+  --white:#FFFFFF;
+  --radius:18px;
+  --shadow:0 18px 50px rgba(18,40,64,.08);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--beige-2);
+  color:var(--text);
+  overflow-x:hidden;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto}
+
+/* nav */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(23,50,77,.08);
+}
+.nav-inner{
+  max-width:1200px;margin:0 auto;padding:18px 28px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.logo-wrap{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo-mark{
+  width:38px;height:38px;border-radius:12px;
+  background:linear-gradient(145deg,var(--navy),var(--blue));
+  position:relative;box-shadow:0 10px 25px rgba(23,50,77,.18);
+}
+.logo-mark:before,
+.logo-mark:after{content:'';position:absolute;background:rgba(255,255,255,.92);border-radius:2px}
+.logo-mark:before{width:18px;height:2px;left:10px;top:12px;transform:rotate(-45deg)}
+.logo-mark:after{width:10px;height:2px;left:16px;top:22px}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-name{font-family:'DM Serif Display',serif;font-size:24px;color:var(--navy);letter-spacing:.2px}
+.logo-name span{color:var(--blue)}
+.logo-tag{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--muted);margin-top:5px}
+.nav-links{display:flex;align-items:center;gap:30px}
+.nav-links a{text-decoration:none;font-size:14px;color:var(--navy);font-weight:500;opacity:.82}
+.nav-links a:hover{opacity:1}
+.nav-cta{
+  border:none;background:var(--navy);color:var(--white);padding:12px 18px;border-radius:10px;
+  font-weight:600;font-size:14px;cursor:pointer;transition:.2s ease;font-family:'Inter',sans-serif;
+}
+.nav-cta:hover{background:var(--navy-2);transform:translateY(-1px)}
+
+/* hero */
+.hero{background:var(--white)}
+.hero-inner{
+  max-width:1200px;margin:0 auto;padding:84px 28px 76px;
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:48px;align-items:center;
+}
+.hero-copy{max-width:660px}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;padding:8px 14px;border-radius:999px;
+  background:var(--blue-soft);border:1px solid #dce7f1;color:var(--navy);
+  font-size:12px;font-weight:600;letter-spacing:.4px;margin-bottom:24px;
+}
+.hero-badge:before{content:'';width:8px;height:8px;border-radius:50%;background:var(--blue)}
+.hero h1{
+  font-family:'DM Serif Display',serif;font-size:62px;line-height:1.02;color:var(--navy);
+  margin-bottom:22px;
+}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero p{
+  font-size:18px;line-height:1.8;color:var(--muted);max-width:620px;
+}
+.hero-meta{margin-top:14px;font-size:13px;letter-spacing:.8px;text-transform:uppercase;color:#7b8796}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn-primary,.btn-secondary,.btn-service,.btn-modal{
+  border:none;border-radius:11px;padding:15px 24px;cursor:pointer;
+  font-family:'Inter',sans-serif;font-size:15px;font-weight:600;transition:.2s ease;
+}
+.btn-primary{background:var(--navy);color:var(--white)}
+.btn-primary:hover{background:var(--navy-2);transform:translateY(-1px)}
+.btn-secondary{background:transparent;color:var(--navy);border:1.4px solid rgba(23,50,77,.2)}
+.btn-secondary:hover{background:var(--blue-soft);border-color:#c9d9e7}
+.hero-stats{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:42px;
+}
+.hero-stat{
+  background:var(--beige-2);border:1px solid var(--line);border-radius:16px;padding:22px 20px;
+}
+.hero-stat-num{font-family:'DM Serif Display',serif;font-size:29px;color:var(--navy)}
+.hero-stat-lbl{margin-top:6px;font-size:13px;line-height:1.5;color:var(--muted)}
+.hero-panel{
+  background:linear-gradient(180deg,#fff 0%,#f9f5ef 100%);
+  border:1px solid var(--line);border-radius:26px;padding:26px;box-shadow:var(--shadow);
+}
+.panel-card{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px 22px 18px}
+.panel-kicker{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:10px}
+.panel-title{font-family:'DM Serif Display',serif;font-size:28px;line-height:1.1;color:var(--navy);margin-bottom:12px}
+.panel-text{font-size:15px;line-height:1.75;color:var(--muted);margin-bottom:20px}
+.panel-list{display:grid;gap:10px}
+.panel-item{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.6;color:var(--text)}
+.panel-dot{width:8px;height:8px;border-radius:50%;background:var(--blue);margin-top:8px;flex-shrink:0}
+.mini-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.mini-card{background:var(--navy);color:var(--white);border-radius:16px;padding:18px}
+.mini-card:nth-child(2){background:var(--beige);color:var(--navy);border:1px solid #eadfd1}
+.mini-label{font-size:11px;letter-spacing:1.4px;text-transform:uppercase;opacity:.72;margin-bottom:8px}
+.mini-value{font-family:'DM Serif Display',serif;font-size:22px;line-height:1.15}
+
+/* sections */
+.section{padding:92px 28px}
+.section-wrap{max-width:1200px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue);margin-bottom:12px}
+.section-title{font-family:'DM Serif Display',serif;font-size:42px;line-height:1.12;color:var(--navy);margin-bottom:14px}
+.section-sub{max-width:720px;font-size:16px;line-height:1.8;color:var(--muted);margin-bottom:44px}
+
+/* services */
+#services{background:var(--white)}
+.services-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:22px}
+.service-card{
+  background:var(--beige-2);border:1px solid var(--line);border-radius:22px;padding:28px;
+  display:flex;flex-direction:column;min-height:310px;transition:.25s ease;
+}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.service-card.featured{background:var(--navy);border-color:var(--navy)}
+.service-tag{
+  display:inline-block;align-self:flex-start;font-size:11px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--blue-soft);color:var(--navy);margin-bottom:18px;
+}
+.service-card.featured .service-tag{background:rgba(255,255,255,.1);color:#d7e8f7}
+.service-card h3{font-family:'DM Serif Display',serif;font-size:24px;line-height:1.2;color:var(--navy);margin-bottom:12px}
+.service-card p{font-size:15px;line-height:1.75;color:var(--muted);margin-bottom:24px;flex:1}
+.service-card.featured h3{color:var(--white)}
+.service-card.featured p{color:rgba(255,255,255,.72)}
+.btn-service{background:var(--navy);color:var(--white);width:100%}
+.btn-service:hover{background:var(--navy-2)}
+.service-card.featured .btn-service{background:var(--white);color:var(--navy)}
+
+/* about */
+#about{background:var(--beige)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:start}
+.about-copy,.about-advantage,.team-card,.experience-card{
+  border:1px solid rgba(23,50,77,.08);border-radius:22px;background:rgba(255,255,255,.75);backdrop-filter:blur(4px)
+}
+.about-copy{padding:32px}
+.about-copy p{font-size:15px;line-height:1.85;color:var(--muted);margin-bottom:14px}
+.core-list{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin-top:16px}
+.core-item{display:flex;gap:10px;font-size:14px;line-height:1.6;color:var(--text)}
+.core-check{width:20px;height:20px;border-radius:50%;background:var(--blue-soft);color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:1px}
+.about-side{display:grid;gap:18px}
+.about-advantage{padding:28px;background:var(--navy);color:var(--white)}
+.about-advantage h4{font-family:'DM Serif Display',serif;font-size:24px;color:var(--white);margin-bottom:10px}
+.about-advantage p{font-size:15px;line-height:1.8;color:rgba(255,255,255,.78)}
+.experience-card{padding:26px;background:var(--white)}
+.exp-label{font-size:11px;letter-spacing:1.7px;text-transform:uppercase;color:var(--blue);font-weight:700;margin-bottom:10px}
+.exp-item{font-size:14px;line-height:1.7;color:var(--muted);padding:12px 0;border-top:1px solid var(--line)}
+.exp-item:first-of-type{border-top:none;padding-top:0}
+
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.team-card{padding:28px;background:var(--white);box-shadow:0 14px 35px rgba(23,50,77,.06)}
+.member-top{display:flex;gap:16px;align-items:center;margin-bottom:16px}
+.avatar{width:58px;height:58px;border-radius:18px;background:linear-gradient(145deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'DM Serif Display',serif;font-size:21px;flex-shrink:0}
+.member-name{font-size:18px;font-weight:700;color:var(--navy);line-height:1.25}
+.member-role{font-size:12px;text-transform:uppercase;letter-spacing:1.4px;color:var(--blue);margin-top:4px;font-weight:700}
+.member-desc{font-size:14px;line-height:1.75;color:var(--muted)}
+.member-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.member-tag{background:var(--blue-soft);color:var(--navy);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600}
+
+.team-teaser{margin-top:30px;background:linear-gradient(135deg,#ffffff 0%,#f7f1e8 100%);border:1px solid rgba(23,50,77,.08);border-radius:24px;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:20px;box-shadow:0 14px 35px rgba(23,50,77,.05)}
+.team-teaser-copy{max-width:700px}
+.team-teaser-kicker{font-size:11px;font-weight:700;letter-spacing:1.7px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.team-teaser h3{font-family:'DM Serif Display',serif;font-size:30px;line-height:1.15;color:var(--navy);margin-bottom:8px}
+.team-teaser p{font-size:15px;line-height:1.8;color:var(--muted)}
+.cred-btn{background:var(--navy);color:#fff;white-space:nowrap}
+.cred-btn:hover{background:var(--navy-2);transform:translateY(-1px)}
+.credential-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.credential-card{background:var(--beige-2);border:1px solid var(--line);border-radius:20px;padding:24px}
+.credential-header{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.credential-avatar{width:54px;height:54px;border-radius:16px;background:linear-gradient(145deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-family:'DM Serif Display',serif;font-size:20px;flex-shrink:0}
+.credential-name{font-size:18px;font-weight:700;color:var(--navy);line-height:1.25}
+.credential-role{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:var(--blue);font-weight:700;margin-top:4px}
+.credential-desc{font-size:14px;line-height:1.75;color:var(--muted);margin-bottom:14px}
+.credential-list{display:grid;gap:8px;margin-top:6px}
+.credential-list-item{display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.65;color:var(--text)}
+.credential-list-item .panel-dot{margin-top:6px}
+.credential-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.credential-tag{background:var(--blue-soft);color:var(--navy);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:600}
+
+/* experience */
+#experience{background:var(--white)}
+.experience-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.project-card{background:var(--beige-2);border:1px solid var(--line);border-radius:22px;padding:26px;transition:.25s ease}
+.project-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.project-card h3{font-family:'DM Serif Display',serif;font-size:22px;line-height:1.2;color:var(--navy);margin-bottom:10px}
+.project-card p{font-size:14px;line-height:1.75;color:var(--muted)}
+
+/* contact */
+#contact{background:linear-gradient(180deg,var(--navy) 0%,#1f4262 100%)}
+#contact .eyebrow{color:#d8e7f6}
+#contact .section-title{color:#fff}
+#contact .section-sub{color:rgba(255,255,255,.72)}
+.contact-box{max-width:980px;margin:0 auto;text-align:center}
+#contact .section-sub{max-width:760px;margin:0 auto 36px;text-align:center}
+.contact-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:34px}
+.contact-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px}
+.contact-card strong{display:block;font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:#d8e7f6;margin-bottom:7px}
+.contact-card span{font-size:15px;line-height:1.6;color:rgba(255,255,255,.82)}
+
+/* footer */
+.footer{background:#10273d;color:#d7e0ea;border-top:1px solid rgba(255,255,255,.06)}
+.footer-inner{max-width:1200px;margin:0 auto;padding:28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-logo{font-family:'DM Serif Display',serif;font-size:22px;color:#fff}
+.footer-logo span{color:#9cc0e2}
+.footer-note{font-size:13px;color:rgba(255,255,255,.72)}
+
+/* modal */
+.modal-overlay{
+  position:fixed;inset:0;background:rgba(8,18,31,.68);display:flex;align-items:center;justify-content:center;
+  padding:20px;z-index:300;opacity:0;visibility:hidden;transition:.25s ease;backdrop-filter:blur(6px)
+}
+.modal-overlay.is-open{opacity:1;visibility:visible}
+.modal{
+  width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:#fff;border-radius:24px;
+  box-shadow:0 30px 80px rgba(9,20,33,.35);padding:34px;position:relative;transform:translateY(12px) scale(.97);transition:.25s ease
+}
+.modal-overlay.is-open .modal{transform:translateY(0) scale(1)}
+.modal-close{
+  position:absolute;top:14px;right:14px;width:40px;height:40px;border:none;border-radius:50%;background:transparent;
+  color:var(--muted);font-size:22px;cursor:pointer
+}
+.modal-close:hover{background:#f3f5f7;color:var(--navy)}
+.modal-header{margin-bottom:18px}
+.modal-service-tag{display:inline-block;background:var(--blue-soft);color:var(--navy);padding:6px 10px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.modal-header h2{font-family:'DM Serif Display',serif;font-size:30px;line-height:1.1;color:var(--navy);margin-bottom:8px}
+.modal-header p{font-size:14px;line-height:1.7;color:var(--muted)}
+.modal-form label{display:block;margin-top:14px;margin-bottom:6px;font-size:13px;font-weight:600;color:var(--text)}
+.modal-form label .req{color:#bb2f2f;margin-left:2px}
+.modal-form input,.modal-form select,.modal-form textarea{
+  width:100%;padding:13px 14px;border:1.3px solid #d9dee6;border-radius:12px;background:#fbfcfd;color:var(--text);
+  font-size:14px;font-family:'Inter',sans-serif;transition:.2s ease
+}
+.modal-form input:focus,.modal-form select:focus,.modal-form textarea:focus{outline:none;border-color:#aac6df;box-shadow:0 0 0 4px rgba(94,143,190,.12);background:#fff}
+.modal-form textarea{min-height:110px;resize:vertical}
+.file-field{margin-top:6px;border:1.6px dashed #c7d2de;border-radius:14px;padding:16px;text-align:center;cursor:pointer;display:block;background:#fbfcfd;transition:.2s ease}
+.file-field:hover{border-color:#9ab8d4;background:#f4f8fb}
+.file-field input[type=file]{display:none}
+.file-field-label{font-size:13px;color:var(--muted)}
+.file-field-label strong{color:var(--navy)}
+.file-name{display:block;margin-top:8px;font-size:12px;color:var(--navy)}
+.btn-modal{width:100%;margin-top:20px;background:var(--navy);color:#fff}
+.btn-modal:hover{background:var(--navy-2)}
+.btn-modal:disabled{opacity:.7;cursor:not-allowed}
+.modal-success{display:none;text-align:center;padding:20px 6px 8px}
+.modal-success.show{display:block}
+.check{
+  width:64px;height:64px;border-radius:50%;background:#ebf7ef;color:#1b8a43;font-size:31px;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px
+}
+.modal-success h3{font-family:'DM Serif Display',serif;font-size:28px;color:var(--navy);margin-bottom:8px}
+.modal-success p{font-size:14px;line-height:1.7;color:var(--muted)}
+body.modal-open{overflow:hidden}
+
+/* responsive */
+@media (max-width:1100px){
+  .services-grid,.experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero-inner,.about-grid{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .nav-inner,.hero-inner,.section,.footer-inner{padding-left:22px;padding-right:22px}
+  .nav-links{display:none}
+  .hero{padding-top:0}
+  .hero h1{font-size:45px}
+  .section-title{font-size:34px}
+  .hero-stats,.core-list,.team-grid,.contact-meta,.services-grid,.experience-grid,.credential-grid{grid-template-columns:1fr}
+  .mini-grid{grid-template-columns:1fr}
+  .team-teaser{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo-wrap" aria-label="StructoCost home">
+      <span class="logo-mark" aria-hidden="true"></span>
+      <span class="logo-text">
+        <span class="logo-name">Structo<span>Cost</span></span>
+        <span class="logo-tag">Structural & Cost Consultancy</span>
+      </span>
+    </a>
+
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <button class="nav-cta" data-open-modal data-service="General Inquiry">Request Consultation</button>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-badge">Philippines-Based Consultancy</div>
+      <h1>
+        Where Structural Design<br>
+        Meets <em>Cost Clarity</em>
+      </h1>
+      <p>
+        We provide pre-construction consultancy for residential, land development, and site infrastructure projects—helping clients make sound technical and financial decisions before construction begins.
+      </p>
+      <div class="hero-meta">Residential · Site Development · Structural & Cost Advisory</div>
+
+      <div class="hero-buttons">
+        <button class="btn-primary" data-open-modal data-service="Initial Consultation">Request an Initial Consultation</button>
+        <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">View Services</button>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-num">₱200M+</div>
+          <div class="hero-stat-lbl">Project value handled across infrastructure and development works.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Residential + Infra</div>
+          <div class="hero-stat-lbl">Project exposure covering residential, site works, and utility-related scopes.</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">PH + Int'l</div>
+          <div class="hero-stat-lbl">Experience supporting local and international engineering requirements.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-panel">
+      <div class="panel-card">
+        <div class="panel-kicker">What We Help Solve</div>
+        <div class="panel-title">Clearer decisions before construction starts</div>
+        <div class="panel-text">
+          StructoCost brings structural thinking and cost discipline together early—so clients can assess feasibility, control budgets, and reduce redesign risk before site execution.
+        </div>
+        <div class="panel-list">
+          <div class="panel-item"><span class="panel-dot"></span><span>Pre-construction review for residential and development projects</span></div>
+          <div class="panel-item"><span class="panel-dot"></span><span>Engineer-led quantity take-off, BOQ, and cost planning</span></div>
+          <div class="panel-item"><span class="panel-dot"></span><span>Reliable technical support for contractors and developers</span></div>
+        </div>
+      </div>
+      <div class="mini-grid">
+        <div class="mini-card">
+          <div class="mini-label">Approach</div>
+          <div class="mini-value">Technical accuracy with commercial practicality</div>
+        </div>
+        <div class="mini-card">
+          <div class="mini-label">Focus</div>
+          <div class="mini-value">Pre-build clarity, scope alignment, and cost confidence</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-wrap">
+    <div class="eyebrow">Our Services</div>
+    <h2 class="section-title">Consulting support designed for the early stages that matter most</h2>
+    <p class="section-sub">
+      We support projects at the point where key technical and budget decisions are made. Our services are structured to help clients assess feasibility, prepare documentation, and move into construction with greater confidence.
+    </p>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-tag">Assessment</span>
+        <h3>Project Feasibility Review</h3>
+        <p>Early-stage structural and cost assessment to evaluate project viability, identify constraints, and establish a realistic direction before full design development.</p>
+        <button class="btn-service" data-open-modal data-service="Project Feasibility Review">Request Consultation</button>
+      </div>
+
+      <div class="service-card featured">
+        <span class="service-tag">Core Service</span>
+        <h3>Pre-Construction Planning & Documentation</h3>
+        <p>Comprehensive support covering structural design coordination, quantity take-off, BOQ preparation, and cost estimation aligned with your project requirements.</p>
+        <button class="btn-service" data-open-modal data-service="Pre-Construction Planning & Documentation">Request Consultation</button>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Cost Planning</span>
+        <h3>Quantity Take-Off & Cost Estimation</h3>
+        <p>Detailed BOQ and cost estimates for budgeting, tendering, value review, and contractor evaluation—prepared using clear, industry-standard formats.</p>
+        <button class="btn-service" data-open-modal data-service="Quantity Take-Off & Cost Estimation">Request Consultation</button>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Technical Support</span>
+        <h3>Support for Contractors & Developers</h3>
+        <p>Outsourced structural and estimating support for contractors, developers, and project teams requiring reliable, engineer-led technical output.</p>
+        <button class="btn-service" data-open-modal data-service="Support for Contractors & Developers">Request Consultation</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-wrap">
+    <div class="eyebrow">About StructoCost</div>
+    <h2 class="section-title">Built on real project experience, not generic templates</h2>
+    <p class="section-sub">
+      StructoCost is an independent consultancy founded by licensed civil engineers with experience in structural design, cost planning, contract administration, and project delivery.
+    </p>
+
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>Our combined background spans residential development, land development works, infrastructure, and international engineering support. We bring together two disciplines that are often treated separately: structural design and cost control.</p>
+        <p>That integration allows us to help clients reduce redesigns, minimize waste, align scope with budget, and make more informed decisions before construction begins.</p>
+
+        <div class="core-list">
+          <div class="core-item"><span class="core-check">✓</span><span>Structural design and analysis</span></div>
+          <div class="core-item"><span class="core-check">✓</span><span>Quantity take-off and BOQ preparation</span></div>
+          <div class="core-item"><span class="core-check">✓</span><span>Cost estimation and budget planning</span></div>
+          <div class="core-item"><span class="core-check">✓</span><span>Contract administration and tender support</span></div>
+          <div class="core-item"><span class="core-check">✓</span><span>Residential and land development projects</span></div>
+          <div class="core-item"><span class="core-check">✓</span><span>Contractor and developer coordination</span></div>
+        </div>
+      </div>
+
+      <div class="about-side">
+        <div class="about-advantage">
+          <h4>Our Advantage</h4>
+          <p>You work with two specialists whose strengths complement each other: one grounded in structural engineering, the other in cost planning and contracts. The result is more practical advice, better coordination, and clearer pre-construction direction.</p>
+        </div>
+
+        <div class="experience-card">
+          <div class="exp-label">Where our experience comes from</div>
+          <div class="exp-item">Large-scale infrastructure and utility-related works in the Philippines</div>
+          <div class="exp-item">Residential land development and site improvement projects</div>
+          <div class="exp-item">Steel and industrial structural design support for international projects</div>
+          <div class="exp-item">Quantity take-off, cost planning, and bid support across multiple project types</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-teaser">
+      <div class="team-teaser-copy">
+        <div class="team-teaser-kicker">Who are they</div>
+        <h3>Meet the engineers behind StructoCost</h3>
+        <p>We keep the homepage focused, but clients should still feel the people behind the consultancy. Open the credentials view to see the backgrounds, tools, and strengths of the two engineers leading the work.</p>
+      </div>
+      <button class="btn-primary cred-btn" type="button" data-open-credentials>View Our Credentials</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="experience">
+  <div class="section-wrap">
+    <div class="eyebrow">Relevant Experience</div>
+    <h2 class="section-title">Representative project background</h2>
+    <p class="section-sub">
+      These examples reflect the professional experience behind StructoCost and the type of project exposure that informs our consultancy approach.
+    </p>
+
+    <div class="experience-grid">
+      <div class="project-card">
+        <h3>Infrastructure and Utility Works</h3>
+        <p>Experience covering road rehabilitation, waterline replacement, asphalt works, and utility-related civil scopes for major private development projects in the Philippines.</p>
+      </div>
+      <div class="project-card">
+        <h3>Residential Land Development</h3>
+        <p>Project exposure in roads, drainage, and site development packages supporting residential subdivisions and broader horizontal development works.</p>
+      </div>
+      <div class="project-card">
+        <h3>Industrial and Steel Structures</h3>
+        <p>Structural engineering support for specialized steel and industrial applications, including internationally coordinated project environments.</p>
+      </div>
+      <div class="project-card">
+        <h3>International Estimating Support</h3>
+        <p>Quantity take-off and estimating assistance for overseas projects involving fabricated structural elements, canopies, and construction-related components.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-wrap contact-box">
+    <div class="eyebrow">Start the Conversation</div>
+    <h2 class="section-title">Request an initial consultation</h2>
+    <p class="section-sub">We take on a limited number of projects to maintain quality. Share your project details and our team will respond within 1–2 business days.</p>
+    <button class="btn-primary" style="padding:16px 34px" data-open-modal data-service="Initial Consultation">Send Project Details</button>
+
+    <div class="contact-meta">
+      <div class="contact-card">
+        <strong>Availability</strong>
+        <span>Monday to Friday<br>8:00 AM – 6:00 PM PHT</span>
+      </div>
+      <div class="contact-card">
+        <strong>Response Time</strong>
+        <span>Within 1–2 business days for new inquiries</span>
+      </div>
+      <div class="contact-card">
+        <strong>Service Area</strong>
+        <span>Philippines-based<br>Remote / International support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark" aria-hidden="true" style="width:34px;height:34px;border-radius:10px"></span>
+      <div>
+        <div class="footer-logo">Structo<span>Cost</span></div>
+        <div class="footer-note">Structural Design & Cost Consultancy</div>
+      </div>
+    </div>
+    <div class="footer-note">Philippines · Remote / International</div>
+    <div class="footer-note">© 2026 StructoCost. All rights reserved.</div>
+  </div>
+</footer>
+
+
+<div class="modal-overlay" id="credentialsModal" role="dialog" aria-modal="true" aria-labelledby="credentialsModalTitle" aria-hidden="true">
+  <div class="modal" role="document" style="max-width:980px">
+    <button class="modal-close" type="button" aria-label="Close" data-close-credentials>&times;</button>
+
+    <div class="modal-header">
+      <div class="modal-service-tag">Leadership Credentials</div>
+      <h2 id="credentialsModalTitle">Who’s behind StructoCost</h2>
+      <p>StructoCost is led by two licensed civil engineers whose experience combines structural design, technical coordination, cost estimation, and contract support.</p>
+    </div>
+
+    <div class="credential-grid">
+      <div class="credential-card">
+        <div class="credential-header">
+          <div class="credential-avatar">JL</div>
+          <div>
+            <div class="credential-name">Engr. Joanna Mhareeh L. Lacambra</div>
+            <div class="credential-role">RCE, RMP · Structural Engineer</div>
+          </div>
+        </div>
+        <p class="credential-desc">Experienced in structural design for steel and industrial projects, with exposure to international oil and gas work and technical delivery for complex structural scopes.</p>
+        <div class="credential-list">
+          <div class="credential-list-item"><span class="panel-dot"></span><span>Structural analysis and design for steel and concrete applications</span></div>
+          <div class="credential-list-item"><span class="panel-dot"></span><span>Experience using STAAD Pro, Tekla, Revit, and technical design coordination tools</span></div>
+          <div class="credential-list-item"><span class="panel-dot"></span><span>Project exposure in industrial, residential, and internationally coordinated engineering scopes</span></div>
+        </div>
+        <div class="credential-tags">
+          <span class="credential-tag">STAAD Pro</span>
+          <span class="credential-tag">Tekla</span>
+          <span class="credential-tag">Revit</span>
+          <span class="credential-tag">Steel Structures</span>
+          <span class="credential-tag">Structural Analysis</span>
+        </div>
+      </div>
+
+      <div class="credential-card">
+        <div class="credential-header">
+          <div class="credential-avatar">CB</div>
+          <div>
+            <div class="credential-name">Engr. Crisanto M. Battung</div>
+            <div class="credential-role">RCE · Quantity Surveyor / Contracts Engineer</div>
+          </div>
+        </div>
+        <p class="credential-desc">Background in cost estimation, contract administration, tender evaluation, and project cost control across infrastructure, land development, and residential-related works.</p>
+        <div class="credential-list">
+          <div class="credential-list-item"><span class="panel-dot"></span><span>Project values handled exceeding ₱200M under major Philippine developers</span></div>
+          <div class="credential-list-item"><span class="panel-dot"></span><span>Experience in BOQ preparation, bid documentation, cost planning, and tender support</span></div>
+          <div class="credential-list-item"><span class="panel-dot"></span><span>Strong involvement in contracts, scope alignment, and project commercial control</span></div>
+        </div>
+        <div class="credential-tags">
+          <span class="credential-tag">BOQ</span>
+          <span class="credential-tag">Cost Estimation</span>
+          <span class="credential-tag">Contract Admin</span>
+          <span class="credential-tag">Tender Support</span>
+          <span class="credential-tag">Cost Control</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="reviewModal" role="dialog" aria-modal="true" aria-labelledby="reviewModalTitle" aria-hidden="true">
+  <div class="modal" role="document">
+    <button class="modal-close" type="button" aria-label="Close" data-close-modal>&times;</button>
+
+    <div class="modal-body" id="modalBody">
+      <div class="modal-header">
+        <div class="modal-service-tag" id="modalServiceTag">Initial Consultation</div>
+        <h2 id="reviewModalTitle">Request an Initial Consultation</h2>
+        <p>Share a few project details and our team will review your inquiry and get back to you within 1–2 business days.</p>
+      </div>
+
+      <form class="modal-form" id="reviewForm" novalidate>
+        <label for="rm-name">Full Name<span class="req">*</span></label>
+        <input id="rm-name" name="name" type="text" autocomplete="name" required placeholder="Your full name">
+
+        <label for="rm-email">Email Address<span class="req">*</span></label>
+        <input id="rm-email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+
+        <label for="rm-phone">Phone / WhatsApp<span class="req">*</span></label>
+        <input id="rm-phone" name="phone" type="tel" autocomplete="tel" required placeholder="+63 900 000 0000">
+
+        <label for="rm-type">Project Type<span class="req">*</span></label>
+        <select id="rm-type" name="projectType" required>
+          <option value="">Select project type</option>
+          <option value="Homeowner">Homeowner / Private Client</option>
+          <option value="Contractor">Contractor</option>
+          <option value="Developer">Developer</option>
+          <option value="Consultant">Consultant / Design Team</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <label for="rm-desc">Project Description<span class="req">*</span></label>
+        <textarea id="rm-desc" name="description" placeholder="Location, floor area, current stage, target scope, and what support you need..." required></textarea>
+
+        <label for="rm-file">Upload Plans or Reference File (optional)</label>
+        <label class="file-field" for="rm-file">
+          <span class="file-field-label"><strong>Choose a file</strong> — PDF or DWG, up to 10MB</span>
+          <input id="rm-file" name="file" type="file" accept=".pdf,.dwg,application/pdf">
+          <span class="file-name" id="rm-file-name"></span>
+        </label>
+
+        <button type="submit" class="btn-modal" id="rm-submit">Send Inquiry</button>
+      </form>
+    </div>
+
+    <div class="modal-success" id="reviewSuccess">
+      <div class="check">✓</div>
+      <h3>Inquiry Received</h3>
+      <p>Thank you. We’ll review your details and get back to you shortly.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var inquiryOverlay = document.getElementById('reviewModal');
+  var credentialsOverlay = document.getElementById('credentialsModal');
+  var form = document.getElementById('reviewForm');
+  var success = document.getElementById('reviewSuccess');
+  var modalBody = document.getElementById('modalBody');
+  var fileInput = document.getElementById('rm-file');
+  var fileNameEl = document.getElementById('rm-file-name');
+  var submitBtn = document.getElementById('rm-submit');
+  var serviceTag = document.getElementById('modalServiceTag');
+  var lastFocus = null;
+
+  function lockBody(){ document.body.classList.add('modal-open'); }
+  function unlockBody(){
+    if(!document.querySelector('.modal-overlay.is-open')){
+      document.body.classList.remove('modal-open');
+    }
+  }
+
+  function openInquiryModal(serviceName){
+    lastFocus = document.activeElement;
+    if(serviceName) serviceTag.textContent = serviceName;
+    inquiryOverlay.classList.add('is-open');
+    inquiryOverlay.setAttribute('aria-hidden','false');
+    lockBody();
+    setTimeout(function(){
+      var first = inquiryOverlay.querySelector('input,select,textarea,button:not(.modal-close)');
+      if(first) first.focus();
+    },150);
+  }
+
+  function closeInquiryModal(){
+    inquiryOverlay.classList.remove('is-open');
+    inquiryOverlay.setAttribute('aria-hidden','true');
+    setTimeout(function(){
+      form.reset();
+      fileNameEl.textContent = '';
+      success.classList.remove('show');
+      modalBody.style.display = '';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Send Inquiry';
+      serviceTag.textContent = 'Initial Consultation';
+      unlockBody();
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    },300);
+  }
+
+  function openCredentialsModal(){
+    lastFocus = document.activeElement;
+    credentialsOverlay.classList.add('is-open');
+    credentialsOverlay.setAttribute('aria-hidden','false');
+    lockBody();
+    setTimeout(function(){
+      var first = credentialsOverlay.querySelector('button');
+      if(first) first.focus();
+    },150);
+  }
+
+  function closeCredentialsModal(){
+    credentialsOverlay.classList.remove('is-open');
+    credentialsOverlay.setAttribute('aria-hidden','true');
+    setTimeout(function(){
+      unlockBody();
+      if(lastFocus && lastFocus.focus) lastFocus.focus();
+    },300);
+  }
+
+  document.querySelectorAll('[data-open-modal]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      openInquiryModal(btn.getAttribute('data-service') || 'Initial Consultation');
+    });
+  });
+
+  document.querySelectorAll('[data-open-credentials]').forEach(function(btn){
+    btn.addEventListener('click', openCredentialsModal);
+  });
+
+  document.querySelectorAll('[data-close-modal]').forEach(function(btn){
+    btn.addEventListener('click', closeInquiryModal);
+  });
+
+  document.querySelectorAll('[data-close-credentials]').forEach(function(btn){
+    btn.addEventListener('click', closeCredentialsModal);
+  });
+
+  inquiryOverlay.addEventListener('click', function(e){
+    if(e.target === inquiryOverlay) closeInquiryModal();
+  });
+
+  credentialsOverlay.addEventListener('click', function(e){
+    if(e.target === credentialsOverlay) closeCredentialsModal();
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key !== 'Escape') return;
+    if(inquiryOverlay.classList.contains('is-open')) closeInquiryModal();
+    else if(credentialsOverlay.classList.contains('is-open')) closeCredentialsModal();
+  });
+
+  fileInput.addEventListener('change', function(){
+    fileNameEl.textContent = fileInput.files && fileInput.files[0] ? fileInput.files[0].name : '';
+  });
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return;
+    }
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    setTimeout(function(){
+      modalBody.style.display = 'none';
+      success.classList.add('show');
+      setTimeout(closeInquiryModal, 2200);
+    },700);
+  });
+})();
+</script>
+</body>
+</html>
