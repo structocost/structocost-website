@@ -606,7 +606,7 @@ body.modal-open{overflow:hidden}
       <div class="modal-header">
         <div class="modal-service-tag" id="modalServiceTag">Initial Consultation</div>
         <h2 id="reviewModalTitle">Request an Initial Consultation</h2>
-        <p>Share a few project details and our team will review your inquiry and get back to you within 1–2 business days.</p>
+        <p>Share your project details and our team will contact you through email to discuss the next steps, required documents, and consultation process.</p>
       </div>
 
       <form 
@@ -614,7 +614,6 @@ body.modal-open{overflow:hidden}
   id="reviewForm"
   action="https://formspree.io/f/mrerowze" 
   method="POST"
-  enctype="multipart/form-data"
 >
 <input type="hidden" name="_subject" value="New StructoCost Inquiry">
 <input type="hidden" name="_captcha" value="false">
@@ -641,12 +640,6 @@ body.modal-open{overflow:hidden}
         <label for="rm-desc">Project Description<span class="req">*</span></label>
         <textarea id="rm-desc" name="description" placeholder="Location, floor area, current stage, target scope, and what support you need..." required></textarea>
 
-        <label for="rm-file">Upload Plans or Reference File (optional)</label>
-        <label class="file-field" for="rm-file">
-          <span class="file-field-label"><strong>Choose a file</strong> — PDF or DWG, up to 10MB</span>
-          <input id="rm-file" name="file" type="file" accept=".pdf,.dwg,application/pdf">
-          <span class="file-name" id="rm-file-name"></span>
-        </label>
 
         <button type="submit" class="btn-modal" id="rm-submit">Send Inquiry</button>
       </form>
@@ -667,8 +660,6 @@ body.modal-open{overflow:hidden}
   var form = document.getElementById('reviewForm');
   var success = document.getElementById('reviewSuccess');
   var modalBody = document.getElementById('modalBody');
-  var fileInput = document.getElementById('rm-file');
-  var fileNameEl = document.getElementById('rm-file-name');
   var submitBtn = document.getElementById('rm-submit');
   var serviceTag = document.getElementById('modalServiceTag');
   var lastFocus = null;
@@ -697,7 +688,6 @@ body.modal-open{overflow:hidden}
     inquiryOverlay.setAttribute('aria-hidden','true');
     setTimeout(function(){
       form.reset();
-      fileNameEl.textContent = '';
       success.classList.remove('show');
       modalBody.style.display = '';
       submitBtn.disabled = false;
@@ -760,9 +750,6 @@ body.modal-open{overflow:hidden}
     else if(credentialsOverlay.classList.contains('is-open')) closeCredentialsModal();
   });
 
-  fileInput.addEventListener('change', function(){
-    fileNameEl.textContent = fileInput.files && fileInput.files[0] ? fileInput.files[0].name : '';
-  });
 
 form.addEventListener('submit', function(e){
   if(!form.checkValidity()){
